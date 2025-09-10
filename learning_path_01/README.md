@@ -12,11 +12,9 @@ docker run -it --rm \
   -p 8888:8888 \
   -v $(pwd):/workspace \
   -w /workspace \
-  nvcr.io/nvidia/pytorch:24.08-py3 \
+  nvcr.io/nvidia/pytorch:25.05-py3 \
   bash -lc 'set -e
     python -m pip install -U pip
-    pip uninstall -y flash-attn || true
-    pip install "flash-attn>=2.7.1,<2.8.0" --no-build-isolation
-    pip install -U "vllm>=0.10.1" "transformers>=4.56" datasets matplotlib ipywidgets huggingface_hub
+    pip install -U "vllm>=0.10.1" "transformers>=4.56" matplotlib ipywidgets huggingface_hub accelerate
     jupyter lab --ip=0.0.0.0 --no-browser --allow-root'
   ```
